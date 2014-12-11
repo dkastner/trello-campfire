@@ -31,32 +31,32 @@ class TrelloCampfire
       return "[#{prefix}] #{creator_fullname} moved #{card_name} from #{data["listBefore"]["name"]} to #{data["listAfter"]["name"]} #{card_url}"
 
     # Comment card
-    elsif node["type"] == "commentCard"
-      return "[#{prefix}] #{creator_fullname} commented on #{card_name}: \"#{data["text"]}\" #{card_url}"
+    #elsif node["type"] == "commentCard"
+      #return "[#{prefix}] #{creator_fullname} commented on #{card_name}: \"#{data["text"]}\" #{card_url}"
 
     # Create card
     elsif node["type"] == "createCard"
       return "[#{prefix}] #{creator_fullname} created #{card_name} in #{data["list"]["name"]} #{card_url}"
 
     # Add a member to a card
-    elsif node["type"] == "addMemberToCard"
-      if node["memberCreator"]["id"] == node["member"]["id"]
-        return "[#{prefix}] #{creator_fullname} joined #{card_name} #{card_url}"
-      else
-        return "[#{prefix}] #{creator_fullname} added #{member_fullname} to #{card_name} #{card_url}"
-      end
+    #elsif node["type"] == "addMemberToCard"
+      #if node["memberCreator"]["id"] == node["member"]["id"]
+        #return "[#{prefix}] #{creator_fullname} joined #{card_name} #{card_url}"
+      #else
+        #return "[#{prefix}] #{creator_fullname} added #{member_fullname} to #{card_name} #{card_url}"
+      #end
 
     # Remove a member to a card
-    elsif node["type"] == "removeMemberFromCard"
-      if node["memberCreator"]["id"] == node["member"]["id"]
-        return "[#{prefix}] #{creator_fullname} left #{card_name} #{card_url}"
-      else
-        return "[#{prefix}] #{creator_fullname} removed #{member_fullname} from #{card_name} #{card_url}"
-      end
+    #elsif node["type"] == "removeMemberFromCard"
+      #if node["memberCreator"]["id"] == node["member"]["id"]
+        #return "[#{prefix}] #{creator_fullname} left #{card_name} #{card_url}"
+      #else
+        #return "[#{prefix}] #{creator_fullname} removed #{member_fullname} from #{card_name} #{card_url}"
+      #end
 
     # Update the name of a card
-    elsif node["type"] == "updateCard" && data["old"] && data["old"]["name"]
-      return "[#{prefix}] #{creator_fullname} renamed [#{data["old"]["name"]}] to #{card_name} #{card_url}"
+    #elsif node["type"] == "updateCard" && data["old"] && data["old"]["name"]
+      #return "[#{prefix}] #{creator_fullname} renamed [#{data["old"]["name"]}] to #{card_name} #{card_url}"
 
     # archived card
     elsif node["type"] == "updateCard" && data["old"]
@@ -67,8 +67,8 @@ class TrelloCampfire
       end
 
     # Complete an item in the checklist of a card
-    elsif node["type"] == "updateCheckItemStateOnCard" && data["checkItem"]["state"] == "complete"
-      return "[#{prefix}] #{creator_fullname} completed #{data["checkItem"]["name"]} on #{card_name} #{card_url}"
+    #elsif node["type"] == "updateCheckItemStateOnCard" && data["checkItem"]["state"] == "complete"
+      #return "[#{prefix}] #{creator_fullname} completed #{data["checkItem"]["name"]} on #{card_name} #{card_url}"
 
     end
   end# }}}
